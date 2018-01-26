@@ -1,11 +1,11 @@
 {
     "name": "RealisticOres",
-    "version": "1.15.1",
+    "version": "1.15.2",
     "title": "Realistic Ores",
     "author": "<NO_NAME> & DeTNTonator",
     "contact": "",
     "homepage": "",
     "factorio_version": "0.15",
     "dependencies": ["base >= 0.15"],
-    "description": "This mod changes how iron and copper ores look. Now, they have more realistic, oxidated look."
+    "description": "New look for iron and copper ores. Now, they have more realistic, oxidized appearance."
 }
