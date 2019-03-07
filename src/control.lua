@@ -18,10 +18,10 @@ script.on_configuration_changed(
 		local oldVersion = modChange.old_version
 		local newVersion = modChange.new_version
 		if oldVersion == nil then
-			game.print("Rechartimg map upon instalation of mod 'Realistic Ores'...")
+			game.print("Recharting the map upon instalation of mod 'Realistic Ores'...")
 			game.forces.player.rechart()
 		elseif isTimeToRechart(oldVersion, newVersion) then
-			game.print("Rechartimg map upon update of mod 'Realistic Ores' (" .. oldVersion .. "-->" .. newVersion .. ")...")
+			game.print("Recharting the map upon update of mod 'Realistic Ores' (" .. oldVersion .. "-->" .. newVersion .. ")...")
 			game.forces.player.rechart()
 		end
 	end
