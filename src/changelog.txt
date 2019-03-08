@@ -1,3 +1,8 @@
+3.16.1
+	- Fixed crash when "Angel's Refining" was enabled.
+
+--------------------------------------------------------------------------------
+
 3.16.0
 	- Support for "Angel's Infinite Ores".
 
