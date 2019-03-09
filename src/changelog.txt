@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 3.17.3
+Date: 09. 03. 2019
+  Features:
+    - Support for "Deadlock's Stacking Beltboxes".
+    - Support for "Deadlock's Stacking Beltboxes & Compact Loaders".
+---------------------------------------------------------------------------------------------------
 Version: 3.17.2
 Date: 08. 03. 2019
   Info:
