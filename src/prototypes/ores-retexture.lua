@@ -53,7 +53,13 @@ changeOreTextures("copper", mapColors["copper"], false, nil)
 changeOreTextures("uranium", mapColors["uranium"], false, nil)
 
 local uraniumProcessing = data.raw.recipe["uranium-processing"]
-uraniumProcessing.icon = getNewTexturePath(uraniumProcessing.icon)
+if uraniumProcessing then
+	uraniumProcessing.icon = getNewTexturePath(uraniumProcessing.icon)
+end
+local uraniumProcessingTech = data.raw.technology["uranium-processing"]
+if uraniumProcessingTech then
+	uraniumProcessingTech.icon = getNewTexturePath(uraniumProcessingTech.icon)
+end
 
 -- Angel's Infinite Ores
 if mods["angelsinfiniteores"] then
