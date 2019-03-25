@@ -3,7 +3,7 @@
 if mods["DeadlockStacking"] or mods["deadlock-beltboxes-loaders"] then
 	local function getNewStackTexturePath(oldTexturePath)
 		local newTexturePath,changes = string.gsub(oldTexturePath, "^__DeadlockStacking__/graphics/", "__RealisticOres__/graphics/icons/")
-		local newTexturePath,changes = string.gsub(newTexturePath, "^__deadlock%-beltboxes%-loaders__/graphics/", "__RealisticOres__/graphics/icons/")
+		local newTexturePath,changes = string.gsub(newTexturePath, "^__deadlock%-beltboxes%-loaders__/graphics/", "__RealisticOres__/graphics/")
 		return newTexturePath
 	end
 	
