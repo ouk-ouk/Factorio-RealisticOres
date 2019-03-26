@@ -21,14 +21,20 @@ local function changeOreTextures(oreName, mapColor, doShadows, tint)
 		oreResource.map_color = mapColor
 		local oreResourceSheet = oreResource.stages.sheet
 		oreResourceSheet.filename = getNewTexturePath(oreResourceSheet.filename)
-		oreResourceSheet.hr_version.filename = getNewTexturePath(oreResourceSheet.hr_version.filename)
+		if oreResourceSheet.hr_version then
+			oreResourceSheet.hr_version.filename = getNewTexturePath(oreResourceSheet.hr_version.filename)
+		end
 		if oreResource.stages_effect then
 			local oreResourceEffectSheet = oreResource.stages_effect.sheet
 			oreResourceEffectSheet.filename = getNewTexturePath(oreResourceEffectSheet.filename)
-			oreResourceEffectSheet.hr_version.filename = getNewTexturePath(oreResourceEffectSheet.hr_version.filename)
+			if oreResourceEffectSheet.hr_version then
+				oreResourceEffectSheet.hr_version.filename = getNewTexturePath(oreResourceEffectSheet.hr_version.filename)
+			end
 			if tint then
 				oreResourceEffectSheet.tint = tint
-				oreResourceEffectSheet.hr_version.tint = tint
+				if oreResourceEffectSheet.hr_version then
+					oreResourceEffectSheet.hr_version.tint = tint
+				end
 			end
 		end
 	end
@@ -37,12 +43,16 @@ local function changeOreTextures(oreName, mapColor, doShadows, tint)
 	if oreParticle then
 		for k,picture in pairs(oreParticle.pictures) do
 			picture.filename = getNewTexturePath(picture.filename)
-			picture.hr_version.filename = getNewTexturePath(picture.hr_version.filename)
+			if picture.hr_version then
+				picture.hr_version.filename = getNewTexturePath(picture.hr_version.filename)
+			end
 		end
 		if doShadows then
 			for k,shadow in pairs(oreParticle.shadows) do
 				shadow.filename = getNewTexturePath(shadow.filename)
-				shadow.hr_version.filename = getNewTexturePath(shadow.hr_version.filename)
+				if shadow.hr_version then
+					shadow.hr_version.filename = getNewTexturePath(shadow.hr_version.filename)
+				end
 			end
 		end
 	end
