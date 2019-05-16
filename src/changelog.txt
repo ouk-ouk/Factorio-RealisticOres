@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 5.16.0
+Date: 16. 05. 2019
+  Features:
+    - Options to switch off new textures for specific ores.
+    - Option to switch off decreased uranium glow.
+    - Options to switch off new textures for specific supported mods.
+---------------------------------------------------------------------------------------------------
 Version: 4.16.0
 Date: 16. 03. 2019
   Features:
