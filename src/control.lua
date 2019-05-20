@@ -13,19 +13,19 @@ end
 script.on_configuration_changed(
 	function(data)
 		if data.mod_startup_settings_changed then
-			game.print("Realistic Ores: Recharting the map upon change of settings...")
+			game.print({"", {"mod-name.RealisticOres"}, ": ", {"RealisticOres-rechartingOnSettings"}})
 			game.forces.player.rechart()
 		else
 			if data.mod_changes == nil then return end
-			local modChange = data.mod_changes["RealisticOres"]
+			local modChange = data.mod_changes[modName]
 			if modChange == nil then return end
 			local oldVersion = modChange.old_version
 			local newVersion = modChange.new_version
 			if oldVersion == nil then
-				game.print("Realistic Ores: Recharting the map upon instalation of the mod...")
+				game.print({"", {"mod-name.RealisticOres"}, ": ", {"RealisticOres-rechartingOnInstalation"}})
 				game.forces.player.rechart()
 			elseif isTimeToRechart(oldVersion, newVersion) then
-				game.print("Realistic Ores: Recharting the map upon update of the mod (" .. oldVersion .. "-->" .. newVersion .. ")...")
+				game.print({"", {"mod-name.RealisticOres"}, ": ", {"RealisticOres-rechartingOnUpdate", oldVersion, newVersion}})
 				game.forces.player.rechart()
 			end
 		end
