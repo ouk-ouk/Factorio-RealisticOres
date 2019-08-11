@@ -10,7 +10,7 @@ local oreSettings = getOreSettings()
 local uraniumGlowSetting = settings.startup[uraniumGlowSettingName].value
 
 local function getNewTexturePath(oldTexturePath)
-	local newTexturePath,changes = string.gsub(oldTexturePath, "^__base__", "__RealisticOres__")
+	local newTexturePath,changes = string.gsub(oldTexturePath, "^__base__", modRoot)
 	return newTexturePath
 end
 
@@ -19,6 +19,10 @@ local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
 		local oreItem = data.raw.item[oreName .. "-ore"]
 		if oreItem then
 			oreItem.icon = getNewTexturePath(oreItem.icon)
+			local pics = oreItem.pictures
+			for i, _ in ipairs(pics) do
+				pics[i].filename = getNewTexturePath(pics[i].filename)
+			end
 		end
 	end
 	
@@ -70,7 +74,7 @@ local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
 end
 
 for key,oreName in ipairs(oreNames) do
-	changeOreTextures(oreName, oreName, false, nil, ironSetting)
+	changeOreTextures(oreName, oreName, false, nil)
 end
 
 if itemsEnabled(oreSettings["uranium"]) then

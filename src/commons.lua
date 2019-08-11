@@ -1,4 +1,5 @@
 modName = "RealisticOres"
+modRoot = "__" .. modName .. "__"
 
 oreNames = {"iron", "copper", "uranium"}
 

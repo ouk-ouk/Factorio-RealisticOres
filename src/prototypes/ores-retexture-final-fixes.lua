@@ -7,8 +7,9 @@ local oreSettings = getOreSettings()
 if mods["DeadlockStacking"] or mods["deadlock-beltboxes-loaders"] then
 	if settings.startup[deadlocksStackingBeltboxesSettingName].value then
 		local function getNewStackTexturePath(oldTexturePath)
-			local newTexturePath,changes = string.gsub(oldTexturePath, "^__DeadlockStacking__/graphics/", "__RealisticOres__/graphics/icons/")
-			local newTexturePath,changes = string.gsub(newTexturePath, "^__deadlock%-beltboxes%-loaders__/graphics/", "__RealisticOres__/graphics/")
+			local newTexturePath,changes = string.gsub(oldTexturePath, "^__DeadlockStacking__/graphics/", modRoot .. "/graphics/icons/")
+			local newTexturePath,changes = string.gsub(newTexturePath, "^__deadlock%-beltboxes%-loaders__/graphics/icons/square/", modRoot .. "/graphics/icons/")
+			local newTexturePath,changes = string.gsub(newTexturePath, "^__deadlock%-beltboxes%-loaders__/graphics/", modRoot .. "/graphics/")
 			return newTexturePath
 		end
 		
