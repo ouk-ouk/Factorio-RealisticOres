@@ -18,6 +18,7 @@ end
 uraniumGlowSettingName = settingNamePrefix .. "uraniumGlow"
 angelsInfiniteOresSettingName = settingNamePrefix .. "angelsInfiniteOres"
 deadlocksStackingBeltboxesSettingName = settingNamePrefix .. "deadlocksStackingBeltboxes"
+simpleCompressSettingName = settingNamePrefix .. "simpleCompress"
 
 function getOreSettings()
 	return {

@@ -10,7 +10,8 @@ local oreSettings = getOreSettings()
 local uraniumGlowSetting = settings.startup[uraniumGlowSettingName].value
 
 local function getNewTexturePath(oldTexturePath)
-	local newTexturePath,changes = string.gsub(oldTexturePath, "^__base__", modRoot)
+	local newTexturePath,changes = string.gsub(oldTexturePath, "^__SimpleCompress__/graphics/", modRoot .. "/graphics/icons/")
+	local newTexturePath,changes = string.gsub(newTexturePath, "^__base__", modRoot)
 	return newTexturePath
 end
 
@@ -20,8 +21,10 @@ local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
 		if oreItem then
 			oreItem.icon = getNewTexturePath(oreItem.icon)
 			local pics = oreItem.pictures
-			for i, _ in ipairs(pics) do
-				pics[i].filename = getNewTexturePath(pics[i].filename)
+			if pics then
+				for i, _ in ipairs(pics) do
+					pics[i].filename = getNewTexturePath(pics[i].filename)
+				end
 			end
 		end
 	end
@@ -96,9 +99,27 @@ if mods["angelsinfiniteores"] then
 				copper	=	{r=0.356, g=0.608, b=0.530},
 				uranium	=	{r=0.718, g=0.761, b=0.200}
 			}
-
-		for key,oreName in ipairs(oreNames) do
+		for _, oreName in ipairs(oreNames) do
 			changeOreTextures(oreName, "infinite-" .. oreName, false, infiniteTintColors[oreName])
+		end
+	end
+end
+
+-- Simple Compress
+if mods["SimpleCompress"] then
+	if settings.startup[simpleCompressSettingName].value then
+		for _, oreName in ipairs(oreNames) do
+			changeOreTextures(oreName, "compressed-" .. oreName, false, nil)
+		end
+		for _, oreName in ipairs(oreNames) do
+			local compressRecipe = data.raw.recipe["compressed-" .. oreName]
+			if compressRecipe then
+				compressRecipe.icon = getNewTexturePath(compressRecipe.icon)
+			end
+		end
+		local oreCompressTech = data.raw.technology["orecompresstech"]
+		if oreCompressTech then
+			oreCompressTech.icon = modRoot .. "/graphics/technology/compress-ores.png"
 		end
 	end
 end

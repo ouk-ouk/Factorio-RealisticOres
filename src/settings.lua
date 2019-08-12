@@ -44,3 +44,14 @@ if mods["DeadlockStacking"] or mods["deadlock-beltboxes-loaders"] then
 		}
 	})
 end
+if mods["SimpleCompress"] then
+	data:extend({
+		{
+			type = "bool-setting",
+			default_value = true,
+			name = simpleCompressSettingName,
+			setting_type = "startup",
+			order = "b"
+		}
+	})
+end
