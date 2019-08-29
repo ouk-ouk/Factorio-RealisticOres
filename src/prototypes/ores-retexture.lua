@@ -14,8 +14,8 @@ local function getNewTexturePath(oldTexturePath)
 	local newTexturePath,changes = string.gsub(newTexturePath, "^__base__", modRoot)
 	if mods["OldOre"] then
 		if settings.startup[oldOreSettingName].value then
-			local newTexturePath,changes = string.gsub(newTexturePath, "^(__OldOre__/.*)-[0-9]%.png$", "%1.png")
-			local newTexturePath,changes = string.gsub(newTexturePath, "^__OldOre__(/.*)%.png$", modRoot .. "%1_old.png")
+			newTexturePath,changes = string.gsub(newTexturePath, "^(__OldOre__/.*)-[0-9]%.png$", "%1.png")
+			newTexturePath,changes = string.gsub(newTexturePath, "^__OldOre__(/.*)%.png$", modRoot .. "%1_old.png")
 		end
 	end
 	return newTexturePath
