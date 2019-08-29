@@ -1,11 +1,19 @@
 {
     "name": "RealisticOres",
-    "version": "5.17.5",
+    "version": "5.17.6",
     "title": "Realistic Ores",
     "author": "<NO_NAME> & DeTNTonator",
     "contact": "",
     "homepage": "",
     "factorio_version": "0.17",
-    "dependencies": ["base >= 0.17.46", "? angelsinfiniteores", "? DeadlockStacking", "? deadlock-beltboxes-loaders >= 2.1", "? SimpleCompress", "! RealisticOresFix"],
+    "dependencies": [
+    		"base >= 0.17.46",
+    		"? angelsinfiniteores",
+		"? DeadlockStacking",
+		"? deadlock-beltboxes-loaders >= 2.1",
+		"? SimpleCompress",
+		"! RealisticOresFix",
+		"? OldOre"
+		],
     "description": "New look for iron, copper and uranium ores. Now, they have colors of real ores, not refined metals. Also, uranium ore glow is decreased."
 }

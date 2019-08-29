@@ -55,3 +55,14 @@ if mods["SimpleCompress"] then
 		}
 	})
 end
+if mods["OldOre"] then
+	data:extend({
+		{
+			type = "bool-setting",
+			default_value = true,
+			name = oldOreSettingName,
+			setting_type = "startup",
+			order = "b"
+		}
+	})
+end
