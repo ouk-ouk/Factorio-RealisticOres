@@ -130,3 +130,33 @@ if mods["SimpleCompress"] then
 		end
 	end
 end
+
+-- Liquify Raw Materials
+if mods["LiquifyRawMaterials"] then
+	if settings.startup[liquifyRawMaterialsSettingName].value then
+		local fluidBaseColors = {
+				iron	=	{r=0.615, g=0.320, b=0.247},
+				copper	=	{r=0.356, g=0.608, b=0.530},
+				uranium	=	{r=0.718, g=0.761, b=0.200}
+			}
+		local fluidFlowColors = {
+				iron	=	{r=0.615, g=0.400, b=0.350},
+				copper	=	{r=0.456, g=0.608, b=0.550},
+				uranium	=	{r=0.718, g=0.761, b=0.350}
+			}
+		for key,oreName in ipairs(oreNames) do
+			if itemsEnabled(oreSettings[oreName]) then
+				local recipe = data.raw.recipe[oreName .. "-ore"]
+				if recipe then
+					recipe.icon = getNewTexturePath(recipe.icon)
+				end
+				local fluid = data.raw.fluid["fluid-" .. oreName .. "-ore"]
+				if fluid then
+					fluid.icon = getNewTexturePath(recipe.icon)
+					fluid.base_color = fluidBaseColors[oreName]
+					fluid.flow_color = fluidFlowColors[oreName]
+				end
+			end
+		end
+	end
+end

@@ -66,3 +66,14 @@ if mods["OldOre"] then
 		}
 	})
 end
+if mods["LiquifyRawMaterials"] then
+	data:extend({
+		{
+			type = "bool-setting",
+			default_value = true,
+			name = liquifyRawMaterialsSettingName,
+			setting_type = "startup",
+			order = "b"
+		}
+	})
+end

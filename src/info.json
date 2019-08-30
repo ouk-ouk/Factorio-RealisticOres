@@ -1,6 +1,6 @@
 {
     "name": "RealisticOres",
-    "version": "5.17.7",
+    "version": "5.17.8",
     "title": "Realistic Ores",
     "author": "<NO_NAME> & DeTNTonator",
     "contact": "",
@@ -13,7 +13,8 @@
 		"? deadlock-beltboxes-loaders >= 2.1",
 		"? SimpleCompress",
 		"! RealisticOresFix",
-		"? OldOre"
+		"? OldOre",
+		"? LiquifyRawMaterials"
 		],
-    "description": "New look for iron, copper and uranium ores. Now, they have colors of real ores, not refined metals. Also, uranium ore glow is decreased."
+    "description": "New look for iron, copper and uranium ores. Now, they have colors of real ores, not refined metals. Also, uranium ore glow is decreased. (Configurable and with support for other mods.)"
 }
