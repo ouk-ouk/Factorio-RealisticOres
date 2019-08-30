@@ -44,3 +44,14 @@ if mods["DeadlockStacking"] or mods["deadlock-beltboxes-loaders"] then
 		}
 	})
 end
+if mods["LiquifyRawMaterials"] then
+	data:extend({
+		{
+			type = "bool-setting",
+			default_value = true,
+			name = liquifyRawMaterialsSettingName,
+			setting_type = "startup",
+			order = "b"
+		}
+	})
+end

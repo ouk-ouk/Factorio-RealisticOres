@@ -17,6 +17,7 @@ end
 uraniumGlowSettingName = settingNamePrefix .. "uraniumGlow"
 angelsInfiniteOresSettingName = settingNamePrefix .. "angelsInfiniteOres"
 deadlocksStackingBeltboxesSettingName = settingNamePrefix .. "deadlocksStackingBeltboxes"
+liquifyRawMaterialsSettingName = settingNamePrefix .. "liquifyRawMaterials"
 
 function getOreSettings()
 	return {
