@@ -1,18 +1,17 @@
 {
     "name": "RealisticOres",
-    "version": "5.17.8",
+    "version": "5.18.8",
     "title": "Realistic Ores",
     "author": "<NO_NAME> & DeTNTonator",
     "contact": "",
     "homepage": "",
-    "factorio_version": "0.17",
+    "factorio_version": "0.18",
     "dependencies": [
-    		"base >= 0.17.46",
+    		"base >= 0.18.0",
     		"? angelsinfiniteores",
 		"? DeadlockStacking",
 		"? deadlock-beltboxes-loaders >= 2.1",
 		"? SimpleCompress",
-		"! RealisticOresFix",
 		"? OldOre",
 		"? LiquifyRawMaterials"
 		],
