@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 5.18.10
+Date: 10. 02. 2020
+  Features:
+    - Withdrawn support for "Deadlock's Stacking Beltboxes" because it is no longer developed and there is no version for Factorio 0.18.x.
+---------------------------------------------------------------------------------------------------
 Version: 5.18.9
 Date: 10. 02. 2020
   Bugfixes:

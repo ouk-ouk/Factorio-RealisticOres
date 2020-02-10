@@ -33,7 +33,7 @@ if mods["angelsinfiniteores"] then
 		}
 	})
 end
-if mods["DeadlockStacking"] or mods["deadlock-beltboxes-loaders"] then
+if mods["deadlock-beltboxes-loaders"] then
 	data:extend({
 		{
 			type = "bool-setting",
