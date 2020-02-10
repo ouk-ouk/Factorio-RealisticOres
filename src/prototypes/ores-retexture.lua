@@ -63,7 +63,7 @@ local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
 			end
 		end
 		
-		local oreParticle = data.raw.particle[oreName .. "-ore-particle"]
+		local oreParticle = data.raw['optimized-particle'][oreName .. "-ore-particle"]
 		if oreParticle then
 			for k,picture in pairs(oreParticle.pictures) do
 				picture.filename = getNewTexturePath(picture.filename)
