@@ -168,3 +168,7 @@ if mods["LiquifyRawMaterials"] then
 		end
 	end
 end
+
+data.raw["resource"]["iron-ore"].mining_visualisation_tint = mapColors["iron"]
+data.raw["resource"]["copper-ore"].mining_visualisation_tint = mapColors["copper"]
+data.raw["resource"]["uranium-ore"].mining_visualisation_tint = mapColors["uranium"]
