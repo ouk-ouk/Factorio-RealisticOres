@@ -144,11 +144,29 @@ if mods["LiquifyRawMaterials"] then
 				copper	=	{r=0.456, g=0.608, b=0.550},
 				uranium	=	{r=0.718, g=0.761, b=0.350}
 			}
+		local fumeColors = {
+				iron	=	{r=0.715, g=0.523, b=0.478},
+				copper	=	{r=0.602, g=0.708, b=0.667},
+				uranium	=	{r=0.821, g=0.861, b=0.482}
+			}
 		for key,oreName in ipairs(oreNames) do
 			if itemsEnabled(oreSettings[oreName]) then
 				local recipe = data.raw.recipe[oreName .. "-ore"]
 				if recipe then
 					recipe.icon = getNewTexturePath(recipe.icon)
+					recipe.crafting_machine_tint = {
+						primary = fluidBaseColors[oreName],
+						secondary = fluidFlowColors[oreName],
+						tertiary = fumeColors[oreName]
+					}
+				end
+				local fluidRecipe = data.raw.recipe["fluid-" .. oreName .. "-ore"]
+				if fluidRecipe then
+					fluidRecipe.crafting_machine_tint = {
+						primary = fluidBaseColors[oreName],
+						secondary = fluidFlowColors[oreName],
+						tertiary = fumeColors[oreName]
+					}
 				end
 				local fluid = data.raw.fluid["fluid-" .. oreName .. "-ore"]
 				if fluid then
