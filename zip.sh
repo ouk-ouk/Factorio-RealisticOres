@@ -1,11 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env sh
 
 app_launcher="$HOME/.steam/steam/steamapps/common/Factorio/bin/x64/factorio"
 mods_dir="$HOME/.factorio/mods/"
 source_dir='./src/'
 info_file="${source_dir}info.json"
 
-if [ "$1" = '-h' -o "$1" = '--help' ]
+help=0
+install=0
+run=0
+if [ "$1" = '-h' -o "$1" = '--help' ] ; then help=1 ; fi
+if [ "$1" = '-i' -o "$1" = '--install' ] ; then install=1 ; fi
+if [ "$1" = '-t' -o "$1" = '--test' ] ; then run=1 ; fi
+
+if [ "$help" -eq 1 ]
 then
 	printf 'A simple script to build the mod (Linux only).\n'
 	printf 'Usage:\t%s [OPTION]\n' "$(basename "$0")"
@@ -26,13 +33,13 @@ cp -Rl "$source_dir" "./${file_name}"
 zip -9 -r "./${file_name}.zip" "./${file_name}"
 rm -rf "./${file_name}"
 
-if [ "$1" = '-i' -o "$1" = '--install' -o "$1" = '-t' -o "$1" = '--test' ]
+if [ "$install" -eq 1 -o "$run" -eq 1 ]
 then
 	printf '\nInstalling "%s" in "%s".\n' "./${file_name}.zip" "$mods_dir"
 	mv "./${file_name}.zip" "$mods_dir"
-fi
-if [ "$1" = '-t' -o "$1" = '--test' ]
-then
-	printf '\nRunning "%s".\n' "$app_launcher"
-	"$app_launcher"
+	if [ "$run" -eq 1 ]
+	then
+		printf '\nRunning "%s".\n' "$app_launcher"
+		"$app_launcher"
+	fi
 fi
