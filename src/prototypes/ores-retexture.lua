@@ -41,6 +41,7 @@ local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
 		if oreResource then
 			oreResource.icon = getNewTexturePath(oreResource.icon)
 			oreResource.map_color = mapColors[oreNameKey]
+			oreResource.mining_visualisation_tint = mapColors[oreNameKey]
 			local oreResourceSheet = oreResource.stages.sheet
 			oreResourceSheet.filename = getNewTexturePath(oreResourceSheet.filename)
 			if oreResourceSheet.hr_version then
