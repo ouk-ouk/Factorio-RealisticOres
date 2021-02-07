@@ -12,13 +12,6 @@ local uraniumGlowSetting = settings.startup[uraniumGlowSettingName].value
 local function getNewTexturePath(oldTexturePath)
 	local newTexturePath,changes = string.gsub(oldTexturePath, "^__SimpleCompress__/graphics/", modRoot .. "/graphics/icons/")
 	local newTexturePath,changes = string.gsub(newTexturePath, "^__base__", modRoot)
-	-- Old Ores
-	if mods["OldOre"] then
-		if settings.startup[oldOreSettingName].value then
-			newTexturePath,changes = string.gsub(newTexturePath, "^(__OldOre__/.*)-[0-9]%.png$", "%1.png")
-			newTexturePath,changes = string.gsub(newTexturePath, "^__OldOre__(/.*)%.png$", modRoot .. "%1_old.png")
-		end
-	end
 	return newTexturePath
 end
 
@@ -135,54 +128,6 @@ if mods["SimpleCompress"] then
 		local oreCompressTech = data.raw.technology["orecompresstech"]
 		if oreCompressTech then
 			oreCompressTech.icon = modRoot .. "/graphics/technology/compress-ores.png"
-		end
-	end
-end
-
--- Liquify Raw Materials
-if mods["LiquifyRawMaterials"] then
-	if settings.startup[liquifyRawMaterialsSettingName].value then
-		local fluidBaseColors = {
-				iron	=	{r=0.615, g=0.320, b=0.247},
-				copper	=	{r=0.356, g=0.608, b=0.530},
-				uranium	=	{r=0.718, g=0.761, b=0.200}
-			}
-		local fluidFlowColors = {
-				iron	=	{r=0.615, g=0.400, b=0.350},
-				copper	=	{r=0.456, g=0.608, b=0.550},
-				uranium	=	{r=0.718, g=0.761, b=0.350}
-			}
-		local fumeColors = {
-				iron	=	{r=0.715, g=0.523, b=0.478},
-				copper	=	{r=0.602, g=0.708, b=0.667},
-				uranium	=	{r=0.821, g=0.861, b=0.482}
-			}
-		for key,oreName in ipairs(oreNames) do
-			if itemsEnabled(oreSettings[oreName]) then
-				local recipe = data.raw.recipe[oreName .. "-ore"]
-				if recipe then
-					recipe.icon = getNewTexturePath(recipe.icon)
-					recipe.crafting_machine_tint = {
-						primary = fluidBaseColors[oreName],
-						secondary = fluidFlowColors[oreName],
-						tertiary = fumeColors[oreName]
-					}
-				end
-				local fluidRecipe = data.raw.recipe["fluid-" .. oreName .. "-ore"]
-				if fluidRecipe then
-					fluidRecipe.crafting_machine_tint = {
-						primary = fluidBaseColors[oreName],
-						secondary = fluidFlowColors[oreName],
-						tertiary = fumeColors[oreName]
-					}
-				end
-				local fluid = data.raw.fluid["fluid-" .. oreName .. "-ore"]
-				if fluid then
-					fluid.icon = getNewTexturePath(recipe.icon)
-					fluid.base_color = fluidBaseColors[oreName]
-					fluid.flow_color = fluidFlowColors[oreName]
-				end
-			end
 		end
 	end
 end

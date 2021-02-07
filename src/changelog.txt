@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 5.101.14
+Date: 07. 02. 2021
+  Features:
+    - Withdrawn support for "Old Ores" because it is no longer developed and there is no version for Factorio 1.1.x.
+    - Withdrawn support for "Liquify Raw Materials" because it is no longer developed and there is no version for Factorio 1.1.x.
+---------------------------------------------------------------------------------------------------
 Version: 5.101.13
 Date: 07. 02. 2021
   Update:
