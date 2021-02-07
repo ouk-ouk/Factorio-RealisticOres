@@ -1,13 +1,13 @@
 {
 	"name": "RealisticOres",
-	"version": "5.100.13",
+	"version": "5.101.13",
 	"title": "Realistic Ores",
 	"author": "<NO_NAME> & DeTNTonator",
 	"contact": "",
 	"homepage": "",
 	"factorio_version": "1.1",
 	"dependencies": [
-		"base >= 1.0.0",
+		"base >= 1.1.0",
 		"? angelsinfiniteores",
 		"? deadlock-beltboxes-loaders >= 2.1",
 		"? SimpleCompress",

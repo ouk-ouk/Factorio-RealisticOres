@@ -29,14 +29,14 @@ local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
 			oreItem.icon = getNewTexturePath(oreItem.icon)
 			local pics = oreItem.pictures
 			if pics then
-				for i, _ in ipairs(pics) do
+				for _, pic in ipairs(pics) do
 					-- Uranium ore uses layers, the rest don't.
-					if pics[i].layers then
-						for l, _ in ipairs(pics[i].layers) do
-							pics[i].layers[l].filename = getNewTexturePath(pics[i].layers[l].filename)
+					if pic.layers then
+						for _, layer in ipairs(pic.layers) do
+							layer.filename = getNewTexturePath(layer.filename)
 						end
 					else
-						pics[i].filename = getNewTexturePath(pics[i].filename)
+						pic.filename = getNewTexturePath(pic.filename)
 					end
 				end
 			end
@@ -103,7 +103,6 @@ if itemsEnabled(oreSettings["uranium"]) then
 	local uraniumProcessingTech = data.raw.technology["uranium-processing"]
 	if uraniumProcessingTech then
 		uraniumProcessingTech.icon = getNewTexturePath(uraniumProcessingTech.icon)
-		uraniumProcessingTech.icon_size = 128 -- Base game tex size is now 256. Leave till icon is updated.
 	end
 end
 
