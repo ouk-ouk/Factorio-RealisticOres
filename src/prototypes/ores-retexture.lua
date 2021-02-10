@@ -79,7 +79,7 @@ local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
 	end
 end
 
-for key,oreName in ipairs(oreNames) do
+for _,oreName in ipairs(oreNames) do
 	changeOreTextures(oreName, oreName, false, nil)
 end
 

@@ -30,7 +30,7 @@ if mods["deadlock-beltboxes-loaders"] then
 			replaceStackIcon(data.raw.recipe["deadlock-stacks-unstack-" .. itemName .. "-ore"])
 		end
 		
-		for key,oreName in ipairs(oreNames) do
+		for _,oreName in ipairs(oreNames) do
 			if itemsEnabled(oreSettings[oreName]) then
 				replaceStackIcons(oreName)
 			end
@@ -44,7 +44,7 @@ if mods["Mining_Drones"] then
 		local function replaceColors(itemName)
 			local mainColor = mainColors[itemName]
 			local color = {r = (mainColor.r + 0.5) / 1.5, g = (mainColor.g + 0.5) / 1.5, b = (mainColor.b + 0.5) / 1.5}
-			for key,direction in ipairs({"north", "east", "south", "west"}) do
+			for _,direction in ipairs({"north", "east", "south", "west"}) do
 				local potAnimation = data.raw.animation["depot-pot-" .. itemName .. "-ore-" .. direction]
 				if potAnimation then
 					potAnimation.tint = color
@@ -59,7 +59,7 @@ if mods["Mining_Drones"] then
 			end
 		end
 		
-		for key,oreName in ipairs(oreNames) do
+		for _,oreName in ipairs(oreNames) do
 			if itemsEnabled(oreSettings[oreName]) then
 				replaceColors(oreName)
 			end

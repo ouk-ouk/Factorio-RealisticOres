@@ -1,6 +1,6 @@
 require("commons")
 
-for key,oreName in ipairs(oreNames) do
+for _,oreName in ipairs(oreNames) do
 	data:extend({
 		{
 			type = "string-setting",
