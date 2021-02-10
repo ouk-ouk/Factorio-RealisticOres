@@ -1,11 +1,5 @@
 require("commons")
 
-local mapColors = {
-		iron	=	{r=0.615, g=0.320, b=0.247},
-		copper	=	{r=0.356, g=0.608, b=0.530},
-		uranium	=	{r=0.718, g=0.761, b=0.200}
-	}
-
 local oreSettings = getOreSettings()
 local uraniumGlowSetting = settings.startup[uraniumGlowSettingName].value
 
@@ -37,6 +31,7 @@ local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
 	end
 	
 	if patchesEnabled(oreSettings[oreNameKey]) then
+		local mapColors = mainColors
 		local oreResource = data.raw.resource[oreName .. "-ore"]
 		if oreResource then
 			oreResource.icon = getNewTexturePath(oreResource.icon)

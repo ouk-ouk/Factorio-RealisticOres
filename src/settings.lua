@@ -55,3 +55,14 @@ if mods["SimpleCompress"] then
 		}
 	})
 end
+if mods["Mining_Drones"] then
+	data:extend({
+		{
+			type = "bool-setting",
+			default_value = true,
+			name = miningDronesSettingName,
+			setting_type = "startup",
+			order = "b"
+		}
+	})
+end
