@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 7.101.0
+Date: 06. 03. 2021
+  Features:
+    - Restored support for "Old Ores" because it is developed again and there is a version for Factorio 1.1.x.
+---------------------------------------------------------------------------------------------------
 Version: 6.101.0
 Date: 10. 02. 2021
   Features:

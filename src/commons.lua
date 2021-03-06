@@ -26,6 +26,7 @@ angelsInfiniteOresSettingName = settingNamePrefix .. "angelsInfiniteOres"
 deadlocksStackingBeltboxesSettingName = settingNamePrefix .. "deadlocksStackingBeltboxes"
 simpleCompressSettingName = settingNamePrefix .. "simpleCompress"
 miningDronesSettingName = settingNamePrefix .. "miningDrones"
+oldOreSettingName = settingNamePrefix .. "oldOre"
 
 function getOreSettings()
 	return {

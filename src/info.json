@@ -1,6 +1,6 @@
 {
 	"name": "RealisticOres",
-	"version": "6.101.0",
+	"version": "7.101.0",
 	"title": "Realistic Ores",
 	"author": "<NO_NAME> & DeTNTonator",
 	"contact": "",
@@ -11,7 +11,8 @@
 		"? angelsinfiniteores",
 		"? deadlock-beltboxes-loaders >= 2.1",
 		"? SimpleCompress",
-		"? Mining_Drones >= 1.1.0"
+		"? Mining_Drones >= 1.1.0",
+		"? OldOre >= 1.1.3"
 	],
 	"description": "New look for iron, copper and uranium ores. Now, they have colors of real ores, not refined metals. Also, uranium ore glow is decreased. (Configurable and with support for other mods.)"
 }
