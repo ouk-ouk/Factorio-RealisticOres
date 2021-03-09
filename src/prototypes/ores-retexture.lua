@@ -1,8 +1,10 @@
 require("commons")
 
+-- Constants/settings
 local oreSettings = getOreSettings()
 local uraniumGlowSetting = settings.startup[uraniumGlowSettingName].value
 
+-- Utils
 local function getNewTexturePath(oldTexturePath)
 	local newTexturePath,changes = string.gsub(oldTexturePath, "^__SimpleCompress__/graphics/", modRoot .. "/graphics/icons/")
 	local newTexturePath,changes = string.gsub(newTexturePath, "^__base__", modRoot)
@@ -16,6 +18,7 @@ local function getNewTexturePath(oldTexturePath)
 	return newTexturePath
 end
 
+-- Change ore textures and releated sprites
 local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
 	if itemsEnabled(oreSettings[oreNameKey]) then
 		local oreItem = data.raw.item[oreName .. "-ore"]

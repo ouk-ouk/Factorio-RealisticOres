@@ -1,12 +1,15 @@
+-- General
 modName = "RealisticOres"
 modRoot = "__" .. modName .. "__"
 
+-- Colors
 mainColors = {
 	iron	=	{r=0.615, g=0.320, b=0.247},
 	copper	=	{r=0.356, g=0.608, b=0.530},
 	uranium	=	{r=0.718, g=0.761, b=0.200}
 }
 
+-- Settings names
 oreNames = {"iron", "copper", "uranium"}
 
 local oreSetting_none = "none"
@@ -28,6 +31,7 @@ simpleCompressSettingName = settingNamePrefix .. "simpleCompress"
 miningDronesSettingName = settingNamePrefix .. "miningDrones"
 oldOreSettingName = settingNamePrefix .. "oldOre"
 
+-- Settings utils
 function getOreSettings()
 	return {
 			iron	=	settings.startup[getOreSettingName("iron")].value,

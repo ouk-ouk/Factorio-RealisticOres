@@ -1,5 +1,6 @@
 require("commons")
 
+-- Main
 for _,oreName in ipairs(oreNames) do
 	data:extend({
 		{
@@ -22,6 +23,7 @@ data:extend({
 	}
 })
 
+-- Other mods
 if mods["angelsinfiniteores"] then
 	data:extend({
 		{

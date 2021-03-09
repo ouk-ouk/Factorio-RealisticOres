@@ -1,3 +1,4 @@
+-- Rechart the map in needed
 local function parseVersionNumber(versionNumber)
 	local majorVersion = tonumber(string.match(versionNumber, "^(%d+)%."))
 	local minorVersion = tonumber(string.match(versionNumber, "%.(%d+)$"))
