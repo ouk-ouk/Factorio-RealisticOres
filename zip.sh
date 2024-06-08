@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+set -e
+
 app_launcher="$HOME/.steam/steam/steamapps/common/Factorio/bin/x64/factorio"
 mods_dir="$HOME/.factorio/mods/"
 source_dir='./src/'
@@ -8,9 +10,9 @@ info_file="${source_dir}info.json"
 help=0
 install=0
 run=0
-if [ "$1" = '-h' -o "$1" = '--help' ] ; then help=1 ; fi
-if [ "$1" = '-i' -o "$1" = '--install' ] ; then install=1 ; fi
-if [ "$1" = '-t' -o "$1" = '--test' ] ; then run=1 ; fi
+if [ "$1" = '-h' ] || [ "$1" = '--help' ] ; then help=1 ; fi
+if [ "$1" = '-i' ] || [ "$1" = '--install' ] ; then install=1 ; fi
+if [ "$1" = '-t' ] || [ "$1" = '--test' ] ; then run=1 ; fi
 
 if [ "$help" -eq 1 ]
 then
@@ -33,7 +35,7 @@ cp -Rl "$source_dir" "./${file_name}"
 zip -9 -r "./${file_name}.zip" "./${file_name}"
 rm -rf "./${file_name}"
 
-if [ "$install" -eq 1 -o "$run" -eq 1 ]
+if [ "$install" -eq 1 ] || [ "$run" -eq 1 ]
 then
 	printf '\nInstalling "%s" in "%s".\n' "./${file_name}.zip" "$mods_dir"
 	mv "./${file_name}.zip" "$mods_dir"

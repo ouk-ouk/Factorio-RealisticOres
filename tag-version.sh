@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env sh
+
+set -e
 
 source_dir='./src/'
 info_file="${source_dir}info.json"
