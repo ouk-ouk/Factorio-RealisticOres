@@ -79,3 +79,14 @@ if mods["OldOre"] then
 		}
 	})
 end
+if mods["nullius"] then
+	data:extend({
+		{
+			type = "bool-setting",
+			default_value = true,
+			name = nulliusSettingName,
+			setting_type = "startup",
+			order = "b"
+		}
+	})
+end

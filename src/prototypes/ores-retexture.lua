@@ -136,3 +136,22 @@ if mods["SimpleCompress"] then
 		end
 	end
 end
+
+-- Nullius
+if mods["nullius"] then
+	if settings.startup[nulliusSettingName].value then
+		if itemsEnabled(oreSettings["iron"]) then
+			local tech = data.raw.technology["nullius-checkpoint-iron-ore"]
+			if tech then
+				icons = tech["icons"]
+				if icons then
+					icon = icons[1]
+					if icon then
+						local newTexturePath,changes = string.gsub(icon.icon, "^__base__", modRoot)
+						icon.icon = newTexturePath
+					end
+				end
+			end
+		end
+	end
+end

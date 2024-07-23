@@ -30,6 +30,7 @@ deadlocksStackingBeltboxesSettingName = settingNamePrefix .. "deadlocksStackingB
 simpleCompressSettingName = settingNamePrefix .. "simpleCompress"
 miningDronesSettingName = settingNamePrefix .. "miningDrones"
 oldOreSettingName = settingNamePrefix .. "oldOre"
+nulliusSettingName = settingNamePrefix .. "nullius"
 
 -- Settings utils
 function getOreSettings()
