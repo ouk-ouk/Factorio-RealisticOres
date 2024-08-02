@@ -1,0 +1,11 @@
+/.gitattributes	text
+/.gitignore	text
+*.cfg		text
+*.json		text
+*.lua		text
+*.md		text
+*.sh		text eol=lf
+*.txt		text
+
+*.png		binary
+*.xcf		binary
