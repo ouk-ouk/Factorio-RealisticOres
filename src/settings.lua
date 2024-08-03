@@ -9,7 +9,7 @@ for _,oreName in ipairs(oreNames) do
 			default_value = defaultOreSettingValue,
 			name = getOreSettingName(oreName),
 			setting_type = "startup",
-			order = "aa"
+			order = "aa",
 		}
 	})
 end
@@ -19,74 +19,21 @@ data:extend({
 		default_value = true,
 		name = uraniumGlowSettingName,
 		setting_type = "startup",
-		order = "ab"
+		order = "ab",
 	}
 })
 
 -- Other mods
-if mods["angelsinfiniteores"] then
-	data:extend({
-		{
-			type = "bool-setting",
-			default_value = true,
-			name = angelsInfiniteOresSettingName,
-			setting_type = "startup",
-			order = "b"
-		}
-	})
-end
-if mods["deadlock-beltboxes-loaders"] then
-	data:extend({
-		{
-			type = "bool-setting",
-			default_value = true,
-			name = deadlocksStackingBeltboxesSettingName,
-			setting_type = "startup",
-			order = "b"
-		}
-	})
-end
-if mods["SimpleCompress"] then
-	data:extend({
-		{
-			type = "bool-setting",
-			default_value = true,
-			name = simpleCompressSettingName,
-			setting_type = "startup",
-			order = "b"
-		}
-	})
-end
-if mods["Mining_Drones"] then
-	data:extend({
-		{
-			type = "bool-setting",
-			default_value = true,
-			name = miningDronesSettingName,
-			setting_type = "startup",
-			order = "b"
-		}
-	})
-end
-if mods["OldOre"] then
-	data:extend({
-		{
-			type = "bool-setting",
-			default_value = true,
-			name = oldOreSettingName,
-			setting_type = "startup",
-			order = "b"
-		}
-	})
-end
-if mods["nullius"] then
-	data:extend({
-		{
-			type = "bool-setting",
-			default_value = true,
-			name = nulliusSettingName,
-			setting_type = "startup",
-			order = "b"
-		}
-	})
+for _,otherMod in ipairs(otherMods) do
+	if isModPresent(otherMod) then
+		data:extend({
+			{
+				type = "bool-setting",
+				default_value = true,
+				name = getOtherModSettingName(otherMod),
+				setting_type = "startup",
+				order = "b",
+			}
+		})
+	end
 end

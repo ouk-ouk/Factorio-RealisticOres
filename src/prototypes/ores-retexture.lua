@@ -1,26 +1,20 @@
 require("commons")
 
--- Constants/settings
-local oreSettings = getOreSettings()
-local uraniumGlowSetting = settings.startup[uraniumGlowSettingName].value
-
 -- Utils
 local function getNewTexturePath(oldTexturePath)
 	local newTexturePath,changes = string.gsub(oldTexturePath, "^__SimpleCompress__/graphics/", modRoot .. "/graphics/icons/")
 	local newTexturePath,changes = string.gsub(newTexturePath, "^__base__", modRoot)
 	-- Old Ores
-	if mods["OldOre"] then
-		if settings.startup[oldOreSettingName].value then
-			newTexturePath,changes = string.gsub(newTexturePath, "^(__OldOre__/.*)-[0-9]%.png$", "%1.png")
-			newTexturePath,changes = string.gsub(newTexturePath, "^__OldOre__(/.*)%.png$", modRoot .. "%1_old.png")
-		end
+	if shouldSupportMod(otherMod_oldOre) then
+		newTexturePath,changes = string.gsub(newTexturePath, "^(__OldOre__/.*)-[0-9]%.png$", "%1.png")
+		newTexturePath,changes = string.gsub(newTexturePath, "^__OldOre__(/.*)%.png$", modRoot .. "%1_old.png")
 	end
 	return newTexturePath
 end
 
 -- Change ore textures and releated sprites
 local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
-	if itemsEnabled(oreSettings[oreNameKey]) then
+	if isItemEnabled(oreNameKey) then
 		local oreItem = data.raw.item[oreName .. "-ore"]
 		if oreItem then
 			oreItem.icon = getNewTexturePath(oreItem.icon)
@@ -40,7 +34,7 @@ local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
 		end
 	end
 	
-	if patchesEnabled(oreSettings[oreNameKey]) then
+	if isPatchEnabled(oreNameKey) then
 		local mapColors = mainColors
 		local oreResource = data.raw.resource[oreName .. "-ore"]
 		if oreResource then
@@ -54,7 +48,7 @@ local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
 			end
 			if oreResource.stages_effect then
 				local oreResourceEffectSheet = oreResource.stages_effect.sheet
-				if uraniumGlowSetting then
+				if isUraniumGlowEnabled() then
 					oreResourceEffectSheet.filename = getNewTexturePath(oreResourceEffectSheet.filename)
 					if oreResourceEffectSheet.hr_version then
 						oreResourceEffectSheet.hr_version.filename = getNewTexturePath(oreResourceEffectSheet.hr_version.filename)
@@ -93,7 +87,7 @@ for _,oreName in ipairs(oreNames) do
 	changeOreTextures(oreName, oreName, false, nil)
 end
 
-if itemsEnabled(oreSettings["uranium"]) then
+if isItemEnabled("uranium") then
 	local uraniumProcessing = data.raw.recipe["uranium-processing"]
 	if uraniumProcessing then
 		uraniumProcessing.icon = getNewTexturePath(uraniumProcessing.icon)
@@ -105,51 +99,45 @@ if itemsEnabled(oreSettings["uranium"]) then
 end
 
 -- Angel's Infinite Ores
-if mods["angelsinfiniteores"] then
-	if settings.startup[angelsInfiniteOresSettingName].value then
-		local infiniteTintColors = {
-				iron	=	{r=0.460, g=0.260, b=0.1255},
-				copper	=	{r=0.356, g=0.608, b=0.530},
-				uranium	=	{r=0.718, g=0.761, b=0.200}
-			}
-		for _, oreName in ipairs(oreNames) do
-			changeOreTextures(oreName, "infinite-" .. oreName, false, infiniteTintColors[oreName])
-		end
+if shouldSupportMod(otherMod_angelsInfiniteOres) then
+	local infiniteTintColors = {
+			iron	=	{r=0.460, g=0.260, b=0.1255},
+			copper	=	{r=0.356, g=0.608, b=0.530},
+			uranium	=	{r=0.718, g=0.761, b=0.200},
+		}
+	for _, oreName in ipairs(oreNames) do
+		changeOreTextures(oreName, "infinite-" .. oreName, false, infiniteTintColors[oreName])
 	end
 end
 
 -- Simple Compress
-if mods["SimpleCompress"] then
-	if settings.startup[simpleCompressSettingName].value then
-		for _, oreName in ipairs(oreNames) do
-			changeOreTextures(oreName, "compressed-" .. oreName, false, nil)
+if shouldSupportMod(otherMod_simpleCompress) then
+	for _, oreName in ipairs(oreNames) do
+		changeOreTextures(oreName, "compressed-" .. oreName, false, nil)
+	end
+	for _, oreName in ipairs(oreNames) do
+		local compressRecipe = data.raw.recipe["compressed-" .. oreName]
+		if compressRecipe then
+			compressRecipe.icon = getNewTexturePath(compressRecipe.icon)
 		end
-		for _, oreName in ipairs(oreNames) do
-			local compressRecipe = data.raw.recipe["compressed-" .. oreName]
-			if compressRecipe then
-				compressRecipe.icon = getNewTexturePath(compressRecipe.icon)
-			end
-		end
-		local oreCompressTech = data.raw.technology["orecompresstech"]
-		if oreCompressTech then
-			oreCompressTech.icon = modRoot .. "/graphics/technology/compress-ores.png"
-		end
+	end
+	local oreCompressTech = data.raw.technology["orecompresstech"]
+	if oreCompressTech then
+		oreCompressTech.icon = modRoot .. "/graphics/technology/compress-ores.png"
 	end
 end
 
 -- Nullius
-if mods["nullius"] then
-	if settings.startup[nulliusSettingName].value then
-		if itemsEnabled(oreSettings["iron"]) then
-			local tech = data.raw.technology["nullius-checkpoint-iron-ore"]
-			if tech then
-				icons = tech["icons"]
-				if icons then
-					icon = icons[1]
-					if icon then
-						local newTexturePath,changes = string.gsub(icon.icon, "^__base__", modRoot)
-						icon.icon = newTexturePath
-					end
+if shouldSupportMod(otherMod_nullius) then
+	if isItemEnabled("iron") then
+		local tech = data.raw.technology["nullius-checkpoint-iron-ore"]
+		if tech then
+			icons = tech["icons"]
+			if icons then
+				icon = icons[1]
+				if icon then
+					local newTexturePath,changes = string.gsub(icon.icon, "^__base__", modRoot)
+					icon.icon = newTexturePath
 				end
 			end
 		end

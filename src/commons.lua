@@ -6,16 +6,35 @@ modRoot = "__" .. modName .. "__"
 mainColors = {
 	iron	=	{r=0.615, g=0.320, b=0.247},
 	copper	=	{r=0.356, g=0.608, b=0.530},
-	uranium	=	{r=0.718, g=0.761, b=0.200}
+	uranium	=	{r=0.718, g=0.761, b=0.200},
 }
 
--- Settings names
+-- Ores
 oreNames = {"iron", "copper", "uranium"}
 
-local oreSetting_none = "none"
-local oreSetting_patches = "patches"
-local oreSetting_items = "items"
-local oreSetting_all = "all"
+-- Other supported mods
+otherMod_angelsInfiniteOres="angelsInfiniteOres"
+otherMod_deadlocksStackingBeltboxes="deadlocksStackingBeltboxes"
+otherMod_simpleCompress="simpleCompress"
+otherMod_miningDrones="miningDrones"
+otherMod_oldOre="oldOre"
+otherMod_nullius="nullius"
+otherMods = {otherMod_angelsInfiniteOres, otherMod_deadlocksStackingBeltboxes, otherMod_simpleCompress, otherMod_miningDrones, otherMod_oldOre, otherMod_nullius}
+otherModsRealNames = {
+	[otherMod_angelsInfiniteOres]			=	"angelsinfiniteores",
+	[otherMod_deadlocksStackingBeltboxes]	=	"deadlock-beltboxes-loaders",
+	[otherMod_simpleCompress]				=	"SimpleCompress",
+	[otherMod_miningDrones]					=	"Mining_Drones",
+	[otherMod_oldOre]						=	"OldOre",
+	[otherMod_nullius]						=	"nullius",
+}
+
+
+-- Settings names
+local oreSetting_none		=	"none"
+local oreSetting_patches	=	"patches"
+local oreSetting_items		=	"items"
+local oreSetting_all		=	"all"
 
 oreSettingValues = {oreSetting_none, oreSetting_patches, oreSetting_items, oreSetting_all}
 defaultOreSettingValue = oreSetting_all
@@ -25,25 +44,34 @@ function getOreSettingName(oreName)
 	return settingNamePrefix .. oreName
 end
 uraniumGlowSettingName = settingNamePrefix .. "uraniumGlow"
-angelsInfiniteOresSettingName = settingNamePrefix .. "angelsInfiniteOres"
-deadlocksStackingBeltboxesSettingName = settingNamePrefix .. "deadlocksStackingBeltboxes"
-simpleCompressSettingName = settingNamePrefix .. "simpleCompress"
-miningDronesSettingName = settingNamePrefix .. "miningDrones"
-oldOreSettingName = settingNamePrefix .. "oldOre"
-nulliusSettingName = settingNamePrefix .. "nullius"
-
--- Settings utils
-function getOreSettings()
-	return {
-			iron	=	settings.startup[getOreSettingName("iron")].value,
-			copper	=	settings.startup[getOreSettingName("copper")].value,
-			uranium	=	settings.startup[getOreSettingName("uranium")].value
-		}
+function getOtherModSettingName(otherMod)
+	return settingNamePrefix .. otherMod
 end
 
-function patchesEnabled(oreSetting)
+
+-- Utils
+function getOreSetting(oreName)
+	return settings.startup[getOreSettingName(oreName)].value
+end
+function isPatchEnabled(oreName)
+	oreSetting = getOreSetting(oreName)
 	return oreSetting == oreSetting_patches or oreSetting == oreSetting_all
 end
-function itemsEnabled(oreSetting)
+function isItemEnabled(oreName)
+	oreSetting = getOreSetting(oreName)
 	return oreSetting == oreSetting_items or oreSetting == oreSetting_all
+end
+
+function isUraniumGlowEnabled()
+	return settings.startup[uraniumGlowSettingName].value
+end
+
+function isModPresent(otherMod)
+	return mods[otherModsRealNames[otherMod]]
+end
+function isModSupportEnabled(otherMod)
+	return settings.startup[getOtherModSettingName(otherMod)].value
+end
+function shouldSupportMod(otherMod)
+	return isModPresent(otherMod) and isModSupportEnabled(otherMod)
 end
