@@ -143,3 +143,46 @@ if shouldSupportMod(otherMod_nullius) then
 		end
 	end
 end
+
+-- Asteroid Mining
+if shouldSupportMod(otherMod_asteroidMining) then
+	for _, oreName in ipairs(oreNames) do
+		if isItemEnabled(oreName) then
+			local item = data.raw.item["miner-module-" .. oreName .. "-ore"]
+			if item then
+				icons = item["icons"]
+				if icons then
+					icon = icons[3]
+					if icon then
+						local newTexturePath,changes = string.gsub(icon.icon, "^__base__", modRoot)
+						icon.icon = newTexturePath
+					end
+				end
+			end
+			local item = data.raw.item[oreName .. "-ore-chunk"]
+			if item then
+				icons = item["icons"]
+				if icons then
+					if icons[1] then
+						icons[1].icon = modRoot .. "/graphics/icons/resource-chunk-" .. oreName .. ".png"
+					end
+					if icons[2] then
+						icons[2] = nil
+					end
+				end
+			end
+			local item = data.raw.item["asteroid-" .. oreName .. "-ore"]
+			if item then
+				icons = item["icons"]
+				if icons then
+					if icons[1] then
+						icons[1].icon = modRoot .. "/graphics/icons/asteroid-chunk-" .. oreName .. ".png"
+					end
+					if icons[2] then
+						icons[2] = nil
+					end
+				end
+			end
+		end
+	end
+end
