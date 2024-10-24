@@ -43,22 +43,13 @@ local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
 			oreResource.mining_visualisation_tint = mapColors[oreNameKey]
 			local oreResourceSheet = oreResource.stages.sheet
 			oreResourceSheet.filename = getNewTexturePath(oreResourceSheet.filename)
-			if oreResourceSheet.hr_version then
-				oreResourceSheet.hr_version.filename = getNewTexturePath(oreResourceSheet.hr_version.filename)
-			end
 			if oreResource.stages_effect then
 				local oreResourceEffectSheet = oreResource.stages_effect.sheet
 				if isUraniumGlowEnabled() then
 					oreResourceEffectSheet.filename = getNewTexturePath(oreResourceEffectSheet.filename)
-					if oreResourceEffectSheet.hr_version then
-						oreResourceEffectSheet.hr_version.filename = getNewTexturePath(oreResourceEffectSheet.hr_version.filename)
-					end
 				end
 				if tint then
 					oreResourceEffectSheet.tint = tint
-					if oreResourceEffectSheet.hr_version then
-						oreResourceEffectSheet.hr_version.tint = tint
-					end
 				end
 			end
 		end
@@ -67,16 +58,10 @@ local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
 		if oreParticle then
 			for k,picture in pairs(oreParticle.pictures) do
 				picture.filename = getNewTexturePath(picture.filename)
-				if picture.hr_version then
-					picture.hr_version.filename = getNewTexturePath(picture.hr_version.filename)
-				end
 			end
 			if doShadows then
 				for k,shadow in pairs(oreParticle.shadows) do
 					shadow.filename = getNewTexturePath(shadow.filename)
-					if shadow.hr_version then
-						shadow.hr_version.filename = getNewTexturePath(shadow.hr_version.filename)
-					end
 				end
 			end
 		end
