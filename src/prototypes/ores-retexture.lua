@@ -81,6 +81,10 @@ if isItemEnabled("uranium") then
 	if uraniumProcessingTech then
 		uraniumProcessingTech.icon = getNewTexturePath(uraniumProcessingTech.icon)
 	end
+	local uraniumMiningTech = data.raw.technology["uranium-mining"]
+	if uraniumMiningTech then
+		uraniumMiningTech.icon = getNewTexturePath(uraniumMiningTech.icon)
+	end
 end
 
 -- Angel's Infinite Ores
