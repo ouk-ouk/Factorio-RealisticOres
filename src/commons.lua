@@ -17,16 +17,14 @@ otherMod_angelsInfiniteOres			=	"angelsInfiniteOres"
 otherMod_deadlocksStackingBeltboxes	=	"deadlocksStackingBeltboxes"
 otherMod_simpleCompress				=	"simpleCompress"
 otherMod_miningDrones				=	"miningDrones"
-otherMod_oldOre						=	"oldOre"
 otherMod_nullius					=	"nullius"
 otherMod_asteroidMining				=	"asteroidMining"
-otherMods = {otherMod_angelsInfiniteOres, otherMod_deadlocksStackingBeltboxes, otherMod_simpleCompress, otherMod_miningDrones, otherMod_oldOre, otherMod_nullius, otherMod_asteroidMining}
+otherMods = {otherMod_angelsInfiniteOres, otherMod_deadlocksStackingBeltboxes, otherMod_simpleCompress, otherMod_miningDrones, otherMod_nullius, otherMod_asteroidMining}
 otherModsRealNames = {
 	[otherMod_angelsInfiniteOres]			=	"angelsinfiniteores",
 	[otherMod_deadlocksStackingBeltboxes]	=	"deadlock-beltboxes-loaders",
 	[otherMod_simpleCompress]				=	"SimpleCompress",
 	[otherMod_miningDrones]					=	"Mining_Drones",
-	[otherMod_oldOre]						=	"OldOre",
 	[otherMod_nullius]						=	"nullius",
 	[otherMod_asteroidMining]				=	"Asteroid_Mining",
 }
