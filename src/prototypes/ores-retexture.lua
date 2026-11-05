@@ -2,6 +2,9 @@ require("commons")
 
 -- Utils
 local function getNewTexturePath(oldTexturePath)
+	if not oldTexturePath then
+		return nil
+	end
 	local newTexturePath,changes = string.gsub(oldTexturePath, "^__SimpleCompress__/graphics/", modRoot .. "/graphics/icons/")
 	local newTexturePath,changes = string.gsub(newTexturePath, "^__base__", modRoot)
 	return newTexturePath
@@ -28,7 +31,7 @@ local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
 			end
 		end
 	end
-	
+
 	if isPatchEnabled(oreNameKey) then
 		local mapColors = mainColors
 		local oreResource = data.raw.resource[oreName .. "-ore"]
@@ -48,7 +51,7 @@ local function changeOreTextures(oreNameKey, oreName, doShadows, tint)
 				end
 			end
 		end
-		
+
 		local oreParticle = data.raw['optimized-particle'][oreName .. "-ore-particle"]
 		if oreParticle then
 			for k,picture in pairs(oreParticle.pictures) do
