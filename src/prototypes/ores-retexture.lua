@@ -1,3 +1,5 @@
+-- Originally this was running in "data.lua" but now it was moved to "data-updates.lua" to improve interoperability with other mods.
+
 require("commons")
 
 -- Utils
